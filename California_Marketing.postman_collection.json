@@ -1,0 +1,408 @@
+{
+	"info": {
+		"_postman_id": "78bc9466-9eaa-498c-8323-54c546ac9c8d",
+		"name": "California_Marketing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23336918"
+	},
+	"item": [
+		{
+			"name": "Create new address",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"}); ",
+							"",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"",
+							"pm.test(\"Response Size is less than 4 KB\", function () {",
+							"    pm.expect(pm.response.responseSize).to.be.below(4096);",
+							"});",
+							"",
+							"pm.test(\"Body has ID\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"id\");",
+							"});",
+							"",
+							"pm.test(\"Header is Correct\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\",\"application/json;charset=utf-8\");",
+							"    pm.response.to.have.header(\"Content-Length\",\"45\");",
+							"    pm.response.to.have.header(\"Connection\",\"keep-alive\");",
+							"    pm.response.to.have.header(\"Server\",\"Pepyaka/1.19.10\");",
+							"    pm.response.to.have.header(\"X-Content-Type-Options\",\"nosniff\");",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"address\": {\n        \"fullName\": {\n            \"firstName\": \"Miki\",\n            \"lastName\": \"Kivi\"\n        },\n        \"company\": \"zxc\",\n        \"taxInfo\": {\n            \"id\": null,\n            \"type\": null\n        },\n        \"addressLine1\": \"934 Macon Road, 1\",\n        \"addressLine2\": null,\n        \"street\": {\n            \"name\": null,\n            \"number\": null\n        },\n        \"city\": \"Mountain View\",\n        \"country\": \"USA\",\n        \"subdivision\": \"California\",\n        \"zipCode\": \"94035\",\n        \"phoneNumber\": \"1234567890\",\n        \"location\": {\n            \"latitude\": 37.32406,\n            \"longitude\": -122.010508\n        }\n    },\n    \"setAsDefault\": false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://addresses.wixapps.net/_api/addresses-web/v1/addresses",
+					"protocol": "https",
+					"host": [
+						"addresses",
+						"wixapps",
+						"net"
+					],
+					"path": [
+						"_api",
+						"addresses-web",
+						"v1",
+						"addresses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show all addresses 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"}); ",
+							"",
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(600);",
+							"});",
+							"",
+							"pm.test(\"Response Size is less than 4 KB\", function () {",
+							"    pm.expect(pm.response.responseSize).to.be.below(4096);",
+							"});",
+							"",
+							"pm.test(\"Body has ID\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"id\");",
+							"});",
+							"",
+							"pm.test(\"Header is Correct\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\",\"application/json;charset=utf-8\");",
+							"    pm.response.to.have.header(\"Connection\",\"keep-alive\");",
+							"    pm.response.to.have.header(\"Server\",\"Pepyaka/1.19.10\");",
+							"    pm.response.to.have.header(\"X-Content-Type-Options\",\"nosniff\");",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://addresses.wixapps.net/_api/addresses-web/v1/addresses",
+					"protocol": "https",
+					"host": [
+						"addresses",
+						"wixapps",
+						"net"
+					],
+					"path": [
+						"_api",
+						"addresses-web",
+						"v1",
+						"addresses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit address",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"}); ",
+							"",
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(600);",
+							"});",
+							"",
+							"pm.test(\"Response Size is less than 4 KB\", function () {",
+							"    pm.expect(pm.response.responseSize).to.be.below(4096);",
+							"});",
+							"",
+							"pm.test(\"Header is Correct\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\",\"application/json;charset=utf-8\");",
+							"    pm.response.to.have.header(\"Content-Length\",\"2\");",
+							"    pm.response.to.have.header(\"Connection\",\"keep-alive\");",
+							"    pm.response.to.have.header(\"Server\",\"Pepyaka/1.19.10\");",
+							"    pm.response.to.have.header(\"X-Content-Type-Options\",\"nosniff\");",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"address\": {\n        \"id\": \"ee543ca5-420c-47b1-9725-e2fb8b3ea472\",\n        \"fullName\": {\n            \"firstName\": \"Miki\",\n            \"lastName\": \"Mouse\"\n        },\n        \"company\": \"zxcv1\",\n        \"taxInfo\": {\n            \"id\": null,\n            \"type\": null\n        },\n        \"addressLine1\": \"19401 Stevens Creek Boulevard\",\n        \"addressLine2\": null,\n        \"street\": {\n            \"name\": null,\n            \"number\": null\n        },\n        \"city\": \"Cupertino\",\n        \"country\": \"USA\",\n        \"subdivision\": \"CA\",\n        \"zipCode\": \"95014\",\n        \"phoneNumber\": \"1234567890\",\n        \"location\": {\n            \"latitude\": 37.32406,\n            \"longitude\": -122.010508\n        }\n    },\n    \"setAsDefault\": false,\n    \"fieldMask\": {\n        \"paths\": [\n            \"fullName.firstName\",\n            \"fullName.lastName\",\n            \"company\",\n            \"addressLine1\",\n            \"city\",\n            \"country\",\n            \"subdivision\",\n            \"zipCode\",\n            \"phoneNumber\",\n            \"location.latitude\",\n            \"location.longitude\",\n            \"setAsDefault\"\n        ]\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://addresses.wixapps.net/_api/addresses-web/v1/addresses/32040cce-fc3d-4be1-9f1f-2ad25c4fd922",
+					"protocol": "https",
+					"host": [
+						"addresses",
+						"wixapps",
+						"net"
+					],
+					"path": [
+						"_api",
+						"addresses-web",
+						"v1",
+						"addresses",
+						"32040cce-fc3d-4be1-9f1f-2ad25c4fd922"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show all  addresses 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"}); ",
+							"",
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(600);",
+							"});",
+							"",
+							"pm.test(\"Response Size is less than 4 KB\", function () {",
+							"    pm.expect(pm.response.responseSize).to.be.below(4096);",
+							"});",
+							"",
+							"pm.test(\"Body has ID\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"id\");",
+							"});",
+							"",
+							"pm.test(\"Header is Correct\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\",\"application/json;charset=utf-8\");",
+							"    pm.response.to.have.header(\"Connection\",\"keep-alive\");",
+							"    pm.response.to.have.header(\"Server\",\"Pepyaka/1.19.10\");",
+							"    pm.response.to.have.header(\"X-Content-Type-Options\",\"nosniff\");",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://addresses.wixapps.net/_api/addresses-web/v1/addresses",
+					"protocol": "https",
+					"host": [
+						"addresses",
+						"wixapps",
+						"net"
+					],
+					"path": [
+						"_api",
+						"addresses-web",
+						"v1",
+						"addresses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show changed address",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"}); ",
+							"",
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(600);",
+							"});",
+							"",
+							"pm.test(\"Response Size is less than 3 KB\", function () {",
+							"    pm.expect(pm.response.responseSize).to.be.below(3072);",
+							"});",
+							"",
+							"pm.test(\"Body has ID\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"id\");",
+							"});",
+							"",
+							"pm.test(\"Header is Correct\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\",\"application/json;charset=utf-8\");",
+							"    pm.response.to.have.header(\"Content-Length\",\"354\");",
+							"    pm.response.to.have.header(\"Connection\",\"keep-alive\");",
+							"    pm.response.to.have.header(\"Server\",\"Pepyaka/1.19.10\");",
+							"    pm.response.to.have.header(\"X-Content-Type-Options\",\"nosniff\");",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://addresses.wixapps.net/_api/addresses-web/v1/addresses/32040cce-fc3d-4be1-9f1f-2ad25c4fd922",
+					"protocol": "https",
+					"host": [
+						"addresses",
+						"wixapps",
+						"net"
+					],
+					"path": [
+						"_api",
+						"addresses-web",
+						"v1",
+						"addresses",
+						"32040cce-fc3d-4be1-9f1f-2ad25c4fd922"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete address",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"}); ",
+							"",
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(600);",
+							"});",
+							"",
+							"pm.test(\"Response Size is less than 1000 B\", function () {",
+							"    pm.expect(pm.response.responseSize).to.be.below(1000);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Header is Correct\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\",\"application/json;charset=utf-8\");",
+							"    pm.response.to.have.header(\"Content-Length\",\"2\");",
+							"    pm.response.to.have.header(\"Connection\",\"keep-alive\");",
+							"    pm.response.to.have.header(\"Server\",\"Pepyaka/1.19.10\");",
+							"    pm.response.to.have.header(\"X-Content-Type-Options\",\"nosniff\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://addresses.wixapps.net/_api/addresses-web/v1/addresses/32040cce-fc3d-4be1-9f1f-2ad25c4fd922",
+					"protocol": "https",
+					"host": [
+						"addresses",
+						"wixapps",
+						"net"
+					],
+					"path": [
+						"_api",
+						"addresses-web",
+						"v1",
+						"addresses",
+						"32040cce-fc3d-4be1-9f1f-2ad25c4fd922"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "_umf5TYQo1Ox11vV0Fmuuu1ixLyC7Om0qLQxuAp1Fuo.eyJpbnN0YW5jZUlkIjoiZjQ2Y2Q1MDItZjcyZi00NGY3LTk2MzgtNWRhMWRlYjBiNGU3IiwiYXBwRGVmSWQiOiIxNTA1Yjc3NS1lODg1LWViMWItYjY2NS0xZTQ4NWQ5YmY5MGUiLCJtZXRhU2l0ZUlkIjoiMjhiNzkzZDYtNTQyNC00MDU4LTgwNDktMDI2YTRkYjAyODJmIiwic2lnbkRhdGUiOiIyMDIyLTEwLTA3VDA1OjQwOjI5LjM1NFoiLCJ1aWQiOiI3ZTU1N2NhOC1iMGNlLTQzMGQtOThmYi1lMmI3YTVmMzNhMWIiLCJkZW1vTW9kZSI6ZmFsc2UsImFpZCI6IjhmNDRhOTI3LWQ5YzItNDVjYy05YTQ1LTM2NWFlZTMwOGM1OSIsImJpVG9rZW4iOiJkY2RiNDZkNC1hMzBiLTA0YWYtMTY3MS01ZmNiOTMwMDljYzgiLCJzaXRlT3duZXJJZCI6ImY5MTRmMTFjLWFhYjMtNDUyNy04ZDRlLWJhYjc2MjE0M2E2MCIsImV4cGlyYXRpb25EYXRlIjoiMjAyMi0xMC0wN1QwOTo0MDoyOS4zNTRaIiwiaGFzVXNlclJvbGUiOmZhbHNlfQ",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "Authorization",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
